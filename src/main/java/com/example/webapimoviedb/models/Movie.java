@@ -7,7 +7,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+/*
     @Column(length = 50, nullable = false)
     private String title;
     @Column(length = 15, nullable = false)
@@ -21,14 +21,7 @@ public class Movie {
     @Column(length = 15, nullable = false)
     private String pictureUrl;
     @Column(length = 15, nullable = false)
-    private String trailerLink;
-
-    @ManyToMany
-    @JoinColumn(name = "character_id")
-    private Character character;
-    @ManyToOne
-    @JoinColumn(name = "franchise_id")
-    private Franchise franchise;
+    private String trailerLink;*/
 
 }
 

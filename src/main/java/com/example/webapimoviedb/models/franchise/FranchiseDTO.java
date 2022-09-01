@@ -2,10 +2,10 @@ package com.example.webapimoviedb.models.franchise;
 
 import lombok.Data;
 
-@Data
-public class franchiseDTO {
-    private int id;
+//@Data
+public class FranchiseDTO {
+    /*private int id;
     private String name;
-    private String description;
+    private String description;*/
 
 }

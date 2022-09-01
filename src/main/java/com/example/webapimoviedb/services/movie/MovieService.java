@@ -1,4 +1,9 @@
 package com.example.webapimoviedb.services.movie;
 
-public interface MovieService {
+import com.example.webapimoviedb.models.Movie;
+import com.example.webapimoviedb.services.CrudService;
+import org.springframework.stereotype.Service;
+
+
+public interface MovieService extends CrudService<Movie, Integer> {
 }

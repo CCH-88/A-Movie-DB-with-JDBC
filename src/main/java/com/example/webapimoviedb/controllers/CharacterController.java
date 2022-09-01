@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@RestController
-@RequestMapping(path = "api/v1/characters")
+//@RestController
+//@RequestMapping(path = "api/v1/characters")
 public class CharacterController {
 
-    private final CharacterService characterService;
+    /*private final CharacterService characterService;
 
     public CharacterController(CharacterService characterService) {
         this.characterService = characterService;
@@ -26,6 +26,6 @@ public class CharacterController {
     public ResponseEntity add(@RequestBody Character character) {
         characterService.add(character);
         return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
+    }*/
 
 }

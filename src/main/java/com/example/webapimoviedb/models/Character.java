@@ -8,7 +8,7 @@ public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+/*
     @Column(length = 50, nullable = false)
     private String name;
     @Column(length = 15)
@@ -16,11 +16,7 @@ public class Character {
     @Column(length = 15, nullable = false)
     private String gender;
     @Column(length = 15, nullable = false)
-    private String pictureUrl;
-
-    @ManyToMany(mappedBy = "character")
-    private Set<Movie> movies;
-
+    private String pictureUrl;*/
 }
 
 /*
