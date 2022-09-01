@@ -9,9 +9,9 @@ public class Franchise {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String name;
-    @Column(length = 15, nullable = false)
+    @Column(length = 100)
     private String description;
 
     @OneToMany(mappedBy = "franchise")

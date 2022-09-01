@@ -9,19 +9,19 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String title;
-    @Column(length = 15, nullable = false)
+    @Column(length = 15)
     private String genre;
-    @Column(length = 15, nullable = false)
+    @Column(length = 15)
     private String gender;
-    @Column(length = 15, nullable = false)
+    @Column(length = 15)
     private int releaseYear;
-    @Column(length = 15, nullable = false)
+    @Column(length = 15)
     private String director;
-    @Column(length = 15, nullable = false)
+    @Column(length = 100)
     private String pictureUrl;
-    @Column(length = 15, nullable = false)
+    @Column(length = 15)
     private String trailerLink;
 
     @ManyToMany

@@ -9,13 +9,13 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String name;
-    @Column(length = 15)
+    @Column(length = 50)
     private String alias;
-    @Column(length = 15, nullable = false)
+    @Column(length = 50)
     private String gender;
-    @Column(length = 15, nullable = false)
+    @Column(length = 100)
     private String pictureUrl;
 
     @ManyToMany(mappedBy = "characters")
