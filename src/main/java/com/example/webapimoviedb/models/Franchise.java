@@ -8,11 +8,15 @@ public class Franchise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-/*
+
     @Column(length = 50, nullable = false)
     private String name;
     @Column(length = 15, nullable = false)
-    private String description;*/
+    private String description;
+
+    @OneToMany(mappedBy = "franchise")
+    private Set<Movie> movies;
+
 
 
 }
