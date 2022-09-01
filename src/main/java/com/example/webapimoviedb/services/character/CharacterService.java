@@ -1,4 +1,6 @@
 package com.example.webapimoviedb.services.character;
 
-public interface CharacterService {
+import com.example.webapimoviedb.services.CrudService;
+
+public interface CharacterService extends CrudService<Character, Integer> {
 }
