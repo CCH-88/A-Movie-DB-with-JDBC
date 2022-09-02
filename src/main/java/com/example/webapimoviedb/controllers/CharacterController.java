@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@RestController
-@RequestMapping(path = "api/v1/test")
+//@RestController
+//@RequestMapping(path = "api/v1/test")
 public class CharacterController {
 
     /*
@@ -20,11 +20,11 @@ public class CharacterController {
     * response object produced by the server.
     *
     * */
-    @GetMapping("public")
+    /*@GetMapping("public")
     public ResponseEntity<String> getPublic(){
         return ResponseEntity.ok("Public method");
 
-    }
+    }*/
 
     /*
     * The RequestMapping is a general one. Here you need to specify a path.
@@ -34,10 +34,10 @@ public class CharacterController {
         return ResponseEntity.ok().body("Baz!");
     }*/
 
-    @GetMapping("{id}") // GET: localhost:8080/api/v1/test/1
-    public ResponseEntity<String> path(@PathVariable int id) {
+    //@GetMapping("{id}") // GET: localhost:8080/api/v1/test/1
+    /*public ResponseEntity<String> path(@PathVariable int id) {
         return ResponseEntity.ok().body(String.valueOf(id));
-    }
+    }*/
 
 
 
