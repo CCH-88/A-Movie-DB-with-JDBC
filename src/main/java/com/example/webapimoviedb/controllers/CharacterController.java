@@ -7,9 +7,39 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-//@RestController
-//@RequestMapping(path = "api/v1/characters")
+@RestController
+@RequestMapping(path = "api/v1/test")
 public class CharacterController {
+
+    /*
+    * @GetMapping, @PostMapping and other annotations configure
+    * how URLs are mapped to the controller methods.
+    * In this case "ResponseEntity<String> getPublic()"
+    *
+    * The ResponseEntity generic class helps configure the
+    * response object produced by the server.
+    *
+    * */
+    @GetMapping("public")
+    public ResponseEntity<String> getPublic(){
+        return ResponseEntity.ok("Public method");
+
+    }
+
+    /*
+    * The RequestMapping is a general one. Here you need to specify a path.
+    * */
+    /*@RequestMapping(method = RequestMethod.GET, path = "baz")
+    public ResponseEntity<String> baz() {
+        return ResponseEntity.ok().body("Baz!");
+    }*/
+
+    @GetMapping("{id}") // GET: localhost:8080/api/v1/test/1
+    public ResponseEntity<String> path(@PathVariable int id) {
+        return ResponseEntity.ok().body(String.valueOf(id));
+    }
+
+
 
     /*private final CharacterService characterService;
 

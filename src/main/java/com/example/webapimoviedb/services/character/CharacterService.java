@@ -1,8 +1,11 @@
 package com.example.webapimoviedb.services.character;
 
 
-import com.example.webapimoviedb.models.Franchise;
 import com.example.webapimoviedb.services.CrudService;
 
-public interface CharacterService extends CrudService<Franchise, Integer> {
+/**
+ * Service for the Character domain class.
+ * Providing basic CRUD functionality through CrudService and any extended functionality.
+ */
+public interface CharacterService extends CrudService<Character, Integer> {
 }

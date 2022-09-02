@@ -1,5 +1,8 @@
 package com.example.webapimoviedb.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -20,6 +23,8 @@ public class Character {
 
     @ManyToMany(mappedBy = "characters")
     private Set<Movie> movies;
+
+
 }
 
 /*

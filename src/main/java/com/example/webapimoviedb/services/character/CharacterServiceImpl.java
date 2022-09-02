@@ -16,66 +16,7 @@ import java.util.Collection;
  * Logs errors through the standard logger.
  */
 
-public class CharacterServiceImpl implements CharacterService  {
-
-    private final Logger logger = LoggerFactory.getLogger(CharacterServiceImpl.class);
-
-    private final CharacterRepository characterRepository;
-
-    public CharacterServiceImpl(CharacterRepository characterRepository) {
-        this.characterRepository = characterRepository;
-    }
+public class CharacterServiceImpl  {
 
 
-    /**
-     * @param integer
-     * @return
-     */
-    @Override
-    public Franchise findById(Integer integer) {
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    @Override
-    public Collection<Franchise> findAll() {
-        return null;
-    }
-
-    /**
-     * @param entity
-     * @return
-     */
-    @Override
-    public Franchise add(Franchise entity) {
-        return null;
-    }
-
-    /**
-     * @param entity
-     * @return
-     */
-    @Override
-    public Franchise update(Franchise entity) {
-        return null;
-    }
-
-    /**
-     * @param integer
-     */
-    @Override
-    public void deleteById(Integer integer) {
-
-    }
-
-    /**
-     * @param integer
-     * @return
-     */
-    @Override
-    public boolean exists(Integer integer) {
-        return false;
-    }
 }
