@@ -1,12 +1,9 @@
 package com.example.webapimoviedb.repositories;
 
+import com.example.webapimoviedb.models.Character;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-/*
-* When adding repository, i.e. extends JpaRepository<Movie, Integer>,
-* to this it makes an error.
-*
-* */
-
-public interface CharacterRepository  {
-
+@Repository
+public interface CharacterRepository extends JpaRepository<Character, Integer> {
 }

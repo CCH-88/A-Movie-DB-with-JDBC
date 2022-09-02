@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-//@ComponentScan("com.example.webapimoviedb.controllers")
-//@EnableJpaRepositories("com.example.webapimoviedb.repositories")
-//@EntityScan("com.example.webapimoviedb.models")
+//@ComponentScan(basePackages = "com.example.webapimoviedb.controllers")
+//@EnableJpaRepositories(basePackages = "com.example.webapimoviedb.repositories")
+//@EntityScan(basePackages = "com.example.webapimoviedb.models")
 
 public class WebApiMovieDbApplication {
 

@@ -1,6 +1,7 @@
 package com.example.webapimoviedb.services.character;
 
 
+import com.example.webapimoviedb.models.Character;
 import com.example.webapimoviedb.services.CrudService;
 
 /**
