@@ -1,7 +1,13 @@
 package com.example.webapimoviedb.repositories;
 
-import org.springframework.stereotype.Repository;
+import com.example.webapimoviedb.models.Movie;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-@Repository
-public interface MovieRepository {
+import java.util.Set;
+
+public interface MovieRepository extends JpaRepository<Movie, Integer> {
+    @Query("?")
+    Set<Movie> findAllByTitle(String title);
 }
+

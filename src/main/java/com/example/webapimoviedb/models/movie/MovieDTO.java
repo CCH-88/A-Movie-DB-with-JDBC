@@ -9,5 +9,6 @@ public class MovieDTO {
     private int releaseYear;
     private String director;
     private String pictureUrl;
+    private String trailerLink;
 */}
 
