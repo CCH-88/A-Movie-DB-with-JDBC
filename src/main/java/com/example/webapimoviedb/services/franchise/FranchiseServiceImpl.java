@@ -1,9 +1,7 @@
 package com.example.webapimoviedb.services.franchise;
 
 import com.example.webapimoviedb.models.Franchise;
-import com.example.webapimoviedb.repositories.CharacterRepository;
 import com.example.webapimoviedb.repositories.FranchiseRepository;
-import com.example.webapimoviedb.services.character.CharacterServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
