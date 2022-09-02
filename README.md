@@ -26,5 +26,3 @@ Version 1 - 07-09-2022
 ## Acknowledgements
 
 Thank you Livinus.
-
-Organizing Gitlab repository in the beginning of the work.
