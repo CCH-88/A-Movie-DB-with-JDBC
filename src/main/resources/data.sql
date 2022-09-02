@@ -13,6 +13,6 @@ INSERT INTO character (alias, gender, "name", picture_url) VALUES ('Thor Odinson
 INSERT INTO franchise (description, "name") VALUES ('A superhero franchise', 'Marvel'); -- 1
 
 
--- Characters in movie (Students in subject)
---INSERT INTO student_subject (student_id, subject_id) VALUES (1,1);
---INSERT INTO student_subject (student_id, subject_id) VALUES (2,1);
+-- Movies with specific characters (Students in subject)
+INSERT INTO movie_character (movie_id, character_id) VALUES (1,1);
+INSERT INTO movie_character (movie_id, character_id) VALUES (2,1);
