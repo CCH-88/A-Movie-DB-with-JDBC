@@ -4,9 +4,14 @@ package com.example.webapimoviedb.services.character;
 import com.example.webapimoviedb.models.Character;
 import com.example.webapimoviedb.services.CrudService;
 
+import java.util.Collection;
+
 /**
- * Service for the Character domain class.
- * Providing basic CRUD functionality through CrudService and any extended functionality.
+ *
+ * @Author Peter Hansen, Christian Casper Hofma, Phillip Friis Petersen (Order after surname)
  */
+
 public interface CharacterService extends CrudService<Character, Integer> {
+
+    Collection<Character> findAllByName(String name);
 }

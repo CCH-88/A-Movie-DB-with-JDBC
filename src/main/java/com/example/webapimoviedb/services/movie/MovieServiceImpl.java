@@ -9,6 +9,10 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 
+/**
+ *
+ * @Author Peter Hansen, Christian Casper Hofma, Phillip Friis Petersen (Order after surname)
+ */
 public class MovieServiceImpl implements MovieService {
 
     private final Logger logger = LoggerFactory.getLogger(MovieServiceImpl.class);
