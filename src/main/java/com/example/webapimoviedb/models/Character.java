@@ -1,9 +1,18 @@
 package com.example.webapimoviedb.models;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ *
+ * @Author Peter Hansen, Christian Casper Hofma, Phillip Friis Petersen (Order after surname)
+ */
+@Getter
+@Setter
 @Entity
 public class Character {
     @Id

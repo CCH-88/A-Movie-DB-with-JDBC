@@ -1,5 +1,10 @@
 package com.example.webapimoviedb.util;
 
+/**
+ *
+ * @Author Peter Hansen, Christian Casper Hofma, Phillip Friis Petersen (Order after surname)
+ */
+
 public class ApiErrorResponse {
 
     private String timestamp;

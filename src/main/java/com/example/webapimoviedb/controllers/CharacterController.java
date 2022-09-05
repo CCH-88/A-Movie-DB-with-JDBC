@@ -1,61 +1,79 @@
 package com.example.webapimoviedb.controllers;
 
+import com.example.webapimoviedb.models.Character;
 import com.example.webapimoviedb.services.character.CharacterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.Collection;
 
-//@RestController
-//@RequestMapping(path = "api/v1/test")
+/**
+ *
+ * @Author Peter Hansen, Christian Casper Hofma, Phillip Friis Petersen (Order after surname)
+ */
+@RestController
+@RequestMapping(path = "api/v1/characters")
 public class CharacterController {
 
-    /*
-    * @GetMapping, @PostMapping and other annotations configure
-    * how URLs are mapped to the controller methods.
-    * In this case "ResponseEntity<String> getPublic()"
-    *
-    * The ResponseEntity generic class helps configure the
-    * response object produced by the server.
-    *
-    * */
-    /*@GetMapping("public")
-    public ResponseEntity<String> getPublic(){
-        return ResponseEntity.ok("Public method");
 
-    }*/
+    private final CharacterService characterService;
 
     /*
-    * The RequestMapping is a general one. Here you need to specify a path.
+    *  Abase URL is defined and the relevant service is injected.
+    *
     * */
-    /*@RequestMapping(method = RequestMethod.GET, path = "baz")
-    public ResponseEntity<String> baz() {
-        return ResponseEntity.ok().body("Baz!");
-    }*/
-
-    //@GetMapping("{id}") // GET: localhost:8080/api/v1/test/1
-    /*public ResponseEntity<String> path(@PathVariable int id) {
-        return ResponseEntity.ok().body(String.valueOf(id));
-    }*/
-
-
-
-    /*private final CharacterService characterService;
 
     public CharacterController(CharacterService characterService) {
         this.characterService = characterService;
     }
 
-    @GetMapping
+    /*
+    * The getAll methods gets all the characters in the tabel character.
+    * */
+    @GetMapping // GET: localhost:8081/api/v1/characters
     public ResponseEntity<Collection<Character>> getAll() {
         return ResponseEntity.ok(characterService.findAll());
     }
 
-    @PostMapping
+    /*
+     * The getById methods gets the characters with the provided id.
+     * */
+    @GetMapping("{id}") // GET: localhost:8081/api/v1/characters/1
+    public ResponseEntity<Character> getById(@PathVariable int id) {
+        return ResponseEntity.ok(characterService.findById(id));
+    }
+
+    /*
+     * The findByName method searches for the characters with the provided name.
+     * */
+    @GetMapping("search") // GET: localhost:8081/api/v1/characters/search?name=Thor
+    public ResponseEntity<Collection<Character>> findByName(@RequestParam String name) {
+        return ResponseEntity.ok(characterService.findAllByName(name));
+    }
+
+    @PostMapping // POST: localhost:8081/api/v1/characters
     public ResponseEntity add(@RequestBody Character character) {
-        characterService.add(character);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }*/
+        Character aChar = characterService.add(character);
+        URI location = URI.create("characters/" + aChar.getId());
+        return ResponseEntity.created(location).build();
+        // return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PutMapping("{id}") // PUT: localhost:8080/api/v1/characters/1
+    public ResponseEntity update(@RequestBody Character aCharacter, @PathVariable int id) {
+        // Validates if body is correct
+        if(id != aCharacter.getId())
+            return ResponseEntity.badRequest().build();
+        characterService.update(aCharacter);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("{id}") // DELETE: localhost:8080/api/v1/characters/1
+    public ResponseEntity delete(@PathVariable int id) {
+        characterService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
