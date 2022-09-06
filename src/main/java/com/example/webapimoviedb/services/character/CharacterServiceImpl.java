@@ -7,6 +7,7 @@ import com.example.webapimoviedb.repositories.CharacterRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
@@ -47,7 +48,7 @@ public class CharacterServiceImpl implements CharacterService {
      */
     @Override
     public Collection<Character> findAll() {
-        return null;
+        return characterRepository.findAll();
     }
 
     /**
@@ -56,7 +57,7 @@ public class CharacterServiceImpl implements CharacterService {
      */
     @Override
     public Character add(Character entity) {
-        return null;
+        return characterRepository.save(entity);
     }
 
     /**
@@ -65,24 +66,33 @@ public class CharacterServiceImpl implements CharacterService {
      */
     @Override
     public Character update(Character entity) {
-        return null;
+        return characterRepository.save(entity);
     }
 
     /**
-     * @param integer
+     * @param id
      */
     @Override
-    public void deleteById(Integer integer) {
+    @Transactional
+    public void deleteById(Integer id) {
+        if(characterRepository.existsById(id)) {
+            // Set relationships to null so we can delete without referential problems
+            Character aChar = characterRepository.findById(id).get();
+            aChar.getMovies().forEach(s -> s.setCharacters(null));
+            characterRepository.delete(aChar);
+        }
+        else
+            logger.warn("No character exists with ID: " + id);
 
     }
 
     /**
-     * @param integer
+     * @param id
      * @return
      */
     @Override
-    public boolean exists(Integer integer) {
-        return false;
+    public boolean exists(Integer id) {
+        return characterRepository.existsById(id);
     }
 
     @Override
