@@ -8,5 +8,4 @@ import javax.persistence.criteria.CriteriaBuilder;
 
 @Repository
 public interface FranchiseRepository extends JpaRepository<Franchise, Integer> {
-
 }

@@ -1,5 +1,8 @@
 package com.example.webapimoviedb.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -24,13 +27,15 @@ public class Movie {
     @Column(length = 15)
     private String trailerLink;
 
+    @Getter
+    @Setter
     @ManyToMany
     @JoinTable(
             name = "movie_character",
-            joinColumns = {@JoinColumn(name = "movie_id")},
-            inverseJoinColumns = {@JoinColumn(name = "character_id")}
+            joinColumns = {@JoinColumn(name = "movie_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "character_id", referencedColumnName = "id")}
     )
-    private Set<Character> characters;
+    private Set<Character> characters = new java.util.LinkedHashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "franchise_id")

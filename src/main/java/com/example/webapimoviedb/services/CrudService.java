@@ -2,8 +2,10 @@ package com.example.webapimoviedb.services;
 
 import java.util.Collection;
 
-
-
+/**
+ *
+ * @Author Peter Hansen, Christian Casper Hofma, Phillip Friis Petersen (Order after surname)
+ */
 public interface CrudService<T, ID> {
     T findById(ID id);
     Collection<T> findAll();
