@@ -7,6 +7,7 @@ import com.example.webapimoviedb.repositories.CharacterRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
@@ -42,51 +43,7 @@ public class CharacterServiceImpl implements CharacterService {
                 .orElseThrow(() -> new CharacterNotFoundException(id));
     }
 
-    /**
-     * @return
-     */
-    @Override
-    public Collection<Character> findAll() {
-        return null;
-    }
+public class CharacterServiceImpl  {
 
-    /**
-     * @param entity
-     * @return
-     */
-    @Override
-    public Character add(Character entity) {
-        return null;
-    }
 
-    /**
-     * @param entity
-     * @return
-     */
-    @Override
-    public Character update(Character entity) {
-        return null;
-    }
-
-    /**
-     * @param integer
-     */
-    @Override
-    public void deleteById(Integer integer) {
-
-    }
-
-    /**
-     * @param integer
-     * @return
-     */
-    @Override
-    public boolean exists(Integer integer) {
-        return false;
-    }
-
-    @Override
-    public Collection<Character> findAllByName(String name) {
-        return characterRepository.findAllByName(name);
-    }
 }
