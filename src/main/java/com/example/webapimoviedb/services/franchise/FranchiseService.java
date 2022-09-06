@@ -4,6 +4,7 @@ import com.example.webapimoviedb.models.Franchise;
 import com.example.webapimoviedb.services.CrudService;
 
 
-
+@Service
 public interface FranchiseService extends CrudService<Franchise, Integer> {
+
 }
