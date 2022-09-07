@@ -43,60 +43,7 @@ public class CharacterServiceImpl implements CharacterService {
                 .orElseThrow(() -> new CharacterNotFoundException(id));
     }
 
-    /**
-     * @return
-     */
-    @Override
-    public Collection<Character> findAll() {
-        return characterRepository.findAll();
-    }
+public class CharacterServiceImpl  {
 
-    /**
-     * @param entity
-     * @return
-     */
-    @Override
-    public Character add(Character entity) {
-        return characterRepository.save(entity);
-    }
 
-    /**
-     * @param entity
-     * @return
-     */
-    @Override
-    public Character update(Character entity) {
-        return characterRepository.save(entity);
-    }
-
-    /**
-     * @param id
-     */
-    @Override
-    @Transactional
-    public void deleteById(Integer id) {
-        if(characterRepository.existsById(id)) {
-            // Set relationships to null so we can delete without referential problems
-            Character aChar = characterRepository.findById(id).get();
-            aChar.getMovies().forEach(s -> s.setCharacters(null));
-            characterRepository.delete(aChar);
-        }
-        else
-            logger.warn("No character exists with ID: " + id);
-
-    }
-
-    /**
-     * @param id
-     * @return
-     */
-    @Override
-    public boolean exists(Integer id) {
-        return characterRepository.existsById(id);
-    }
-
-    @Override
-    public Collection<Character> findAllByName(String name) {
-        return characterRepository.findAllByName(name);
-    }
 }
