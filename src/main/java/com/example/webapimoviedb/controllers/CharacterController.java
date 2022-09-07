@@ -3,7 +3,6 @@ package com.example.webapimoviedb.controllers;
 import com.example.webapimoviedb.models.Character;
 import com.example.webapimoviedb.models.character.CharacterDTO;
 import com.example.webapimoviedb.services.character.CharacterService;
-<<<<<<< HEAD
 import com.example.webapimoviedb.util.ApiErrorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -11,9 +10,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-=======
->>>>>>> origin/master
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,7 +54,7 @@ public class CharacterController {
     }
 
     /*
-     * The getById methods gets the characters with the provided id.
+     * The findById methods gets the characters with the provided id.
      * */
     @Operation(summary = "Gets a character by ID")
     @ApiResponses(value = {
@@ -71,7 +67,7 @@ public class CharacterController {
                     content = @Content)
     })
     @GetMapping("{id}") // GET: localhost:8081/api/v1/characters/1
-    public ResponseEntity<Character> getById(@PathVariable int id) {
+    public ResponseEntity<Character> findById(@PathVariable int id) {
         return ResponseEntity.ok(characterService.findById(id));
     }
 
@@ -94,6 +90,18 @@ public class CharacterController {
         return ResponseEntity.ok(characterService.findAllByName(name));
     }
 
+    @Operation(summary = "Adds a character")
+    @ApiResponses( value = {
+            @ApiResponse(responseCode = "204",
+                    description = "Character successfully added",
+                    content = @Content),
+            @ApiResponse(responseCode = "400",
+                    description = "Malformed request",
+                    content = @Content),
+            @ApiResponse(responseCode = "404",
+                    description = "Character with supplied ID not found ",
+                    content = @Content)
+    })
     @PostMapping // POST: localhost:8081/api/v1/characters
     public ResponseEntity add(@RequestBody Character character) {
         Character aChar = characterService.add(character);

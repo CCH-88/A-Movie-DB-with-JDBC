@@ -20,7 +20,7 @@ public class FranchiseMapperImpl implements FranchiseMapper{
         return franchiseDTO;
     }
 
-    @Mapping(target = "franchise", ignore = true)
+    @Mapping(target = "movies", ignore = true)
     @Override
     public Franchise franchiseDtoToFranchise(FranchiseDTO franchiseDTO) {
         if(franchiseDTO == null){

@@ -10,12 +10,12 @@ import org.springframework.jmx.export.annotation.ManagedOperation;
 
 
 
-@Mapper(componentModel = "spring")
+//@Mapper(componentModel = "spring")
 public interface FranchiseMapper {
 
 
     FranchiseDTO franchiseToFranchiseDto(Franchise franchise);
 
-    @Mapping(target = "movies", ignore = true )
+    @Mapping(target = "movies", ignore = true)
     Franchise franchiseDtoToFranchise(FranchiseDTO franchiseDTO);
 }
