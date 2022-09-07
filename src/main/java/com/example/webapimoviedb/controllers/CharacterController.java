@@ -1,6 +1,5 @@
 package com.example.webapimoviedb.controllers;
 
-import com.example.webapimoviedb.mappers.CharacterMapper;
 import com.example.webapimoviedb.models.Character;
 import com.example.webapimoviedb.models.character.CharacterDTO;
 import com.example.webapimoviedb.services.character.CharacterService;
@@ -11,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,15 +27,14 @@ public class CharacterController {
 
 
     private final CharacterService characterService;
-    private final CharacterMapper characterMapper;
+
     /*
-    *  A base URL is defined and the relevant service is injected.
+    *  Abase URL is defined and the relevant service is injected.
     *
     * */
 
-    public CharacterController(CharacterService characterService, CharacterMapper characterMapper) {
+    public CharacterController(CharacterService characterService) {
         this.characterService = characterService;
-        this.characterMapper = characterMapper;
     }
 
     /*
@@ -56,7 +55,7 @@ public class CharacterController {
     }
 
     /*
-     * The findById methods gets the characters with the provided id.
+     * The getById methods gets the characters with the provided id.
      * */
     @Operation(summary = "Gets a character by ID")
     @ApiResponses(value = {
@@ -69,12 +68,8 @@ public class CharacterController {
                     content = @Content)
     })
     @GetMapping("{id}") // GET: localhost:8081/api/v1/characters/1
-    public ResponseEntity findById(@PathVariable int id) {
-
-        CharacterDTO aChar = characterMapper.characterToCharacterDTO(
-                characterService.findById(id)
-        );
-        return ResponseEntity.ok(aChar);
+    public ResponseEntity<Character> getById(@PathVariable int id) {
+        return ResponseEntity.ok(characterService.findById(id));
     }
 
     /*
@@ -95,20 +90,7 @@ public class CharacterController {
     public ResponseEntity<Collection<Character>> findByName(@RequestParam String name) {
         return ResponseEntity.ok(characterService.findAllByName(name));
     }
-    @Operation(summary = "Adds new Character")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "204",
-                    description = "New character added",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Character.class)) }),
-            @ApiResponse(responseCode = "400",
-                    description = "Malformed request",
-                    content = @Content),
-            @ApiResponse(responseCode = "404",
-                    description = "Character with supplied ID does not exist",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ApiErrorResponse.class)) })
-    })
+
     @PostMapping // POST: localhost:8081/api/v1/characters
     public ResponseEntity add(@RequestBody Character character) {
         Character aChar = characterService.add(character);
@@ -130,18 +112,11 @@ public class CharacterController {
                     content = @Content)
     })
     @PutMapping("{id}") // PUT: localhost:8080/api/v1/characters/1
-    public ResponseEntity update(@RequestBody CharacterDTO characterDTO, @PathVariable int id) {
+    public ResponseEntity update(@RequestBody Character aCharacter, @PathVariable int id) {
         // Validates if body is correct
-        /*if(id != aCharacter.getId())
+        if(id != aCharacter.getId())
             return ResponseEntity.badRequest().build();
         characterService.update(aCharacter);
-        return ResponseEntity.noContent().build();*/
-
-        if(id != characterDTO.getId())
-            return ResponseEntity.notFound().build();
-        characterService.update(
-                characterMapper.characterDTOToCharacter(characterDTO)
-        );
         return ResponseEntity.noContent().build();
     }
 
