@@ -1,4 +1,4 @@
-# Appendix B Reading data with JDBC
+# A movie DB with Spring and JDBC
 
 ## Description
 
